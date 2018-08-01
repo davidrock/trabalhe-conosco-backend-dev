@@ -17,6 +17,27 @@ public class UserService implements IUserService {
         return null;
     }
 
+
+    @Override
+    public void importUser(User user) {
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /////////////////////////////////*********///////////////////
     @Override
     public List<User> findAllUsers() {
 
@@ -39,4 +60,6 @@ public class UserService implements IUserService {
         User u = new User("333", "Usuário", "Tester");
         return u;
     }
+
+
 }
