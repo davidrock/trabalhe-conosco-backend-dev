@@ -2,17 +2,25 @@ package com.davidrock.picpay.picpay.models;
 
 public class User {
 
+    private String Id;
     private String Name;
-    private String SurName;
-    private int Age;
+    private String Nickname;
 
     public User() {
     }
 
-    public User(String name, String surName, int age) {
+    public User(String id, String name, String nickname) {
+        Id = id;
         Name = name;
-        SurName = surName;
-        Age = age;
+        Nickname = nickname;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 
     public String getName() {
@@ -23,19 +31,11 @@ public class User {
         Name = name;
     }
 
-    public String getSurName() {
-        return SurName;
+    public String getNickname() {
+        return Nickname;
     }
 
-    public void setSurName(String surName) {
-        SurName = surName;
-    }
-
-    public int getAge() {
-        return Age;
-    }
-
-    public void setAge(int age) {
-        Age = age;
+    public void setNickname(String nickname) {
+        Nickname = nickname;
     }
 }

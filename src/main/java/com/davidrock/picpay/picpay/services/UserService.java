@@ -9,15 +9,22 @@ import java.util.List;
 
 @Service
 public class UserService implements IUserService {
-    @Autowired
+
+    @Override
+    public List<User> findUser(String nome) {
+
+
+        return null;
+    }
+
     @Override
     public List<User> findAllUsers() {
 
         List<User> users = new ArrayList<>();
 
-        User u = new User("David", "Almeida", 28);
-        User u2 = new User("Nathália", "Almeida", 28);
-        User u3 = new User("Aurora", "Almeida", 1);
+        User u = new User("000" ,"David", "Almeida");
+        User u2 = new User("111", "Nathália", "Almeida");
+        User u3 = new User("222", "Aurora", "Almeida");
 
         users.add(u);
         users.add(u2);
@@ -28,6 +35,8 @@ public class UserService implements IUserService {
 
     @Override
     public User findById(int id) {
-        return null;
+
+        User u = new User("333", "Usuário", "Tester");
+        return u;
     }
 }
