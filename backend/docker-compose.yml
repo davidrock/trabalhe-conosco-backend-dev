@@ -19,5 +19,5 @@ services:
     ports:
     - 27017:27017
     container_name: picpay-mongodb
-    volumes:
-    - ./data/mongo/db:/data/db
+#    volumes:
+#    - ./data/mongo/db:/data/db

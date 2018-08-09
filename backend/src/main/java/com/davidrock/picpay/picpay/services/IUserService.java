@@ -8,5 +8,5 @@ public interface IUserService {
     List<User> findUser(String nome);
     List<User> findAllUsers();
     User findById(int id);
-    void importUser(User user);
+    void importUsers();
 }

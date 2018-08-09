@@ -54,3 +54,7 @@ _ReSharper*/
 .vs/
 #Nuget packages folder
 packages/
+/backend/target/*
+/backend/target/picpay-0.0.1-SNAPSHOT.jar
+/backend/target/picpay-0.0.1-SNAPSHOT.jar.original
+/backend/target/**

@@ -1,5 +1,6 @@
 package com.davidrock.picpay.picpay.controllers;
 
+import com.davidrock.picpay.picpay.models.DefaultResponse;
 import com.davidrock.picpay.picpay.models.User;
 import com.davidrock.picpay.picpay.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,31 +30,13 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/load/", method = RequestMethod.GET)
+    public ResponseEntity<DefaultResponse> load(){
 
+        userService.importUsers();
 
-
-
-    /////////////************ TESTANDO API REST //////////////////////////******
-    @RequestMapping(value = "/user/", method = RequestMethod.GET)
-    public ResponseEntity<List<User>> listAllUsers() {
-        List<User> users = userService.findAllUsers();
-
-        if (users.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-        }
-
-        return new ResponseEntity<>(users, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> getUser(@PathVariable int id) {
-        User user = userService.findById(id);
-
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-        }
-
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        DefaultResponse resp = new DefaultResponse("Nomes Carregados com sucesso", true);
+        return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
 }

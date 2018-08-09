@@ -6,40 +6,40 @@ import org.springframework.data.annotation.Id;
 public class User {
 
     @Id
-    private String Id;
-    private String Name;
-    private String Nickname;
+    private String id;
+    private String name;
+    private String nickname;
 
     public User() {
     }
 
     public User(String id, String name, String nickname) {
-        Id = id;
-        Name = name;
-        Nickname = nickname;
+        this.id = id;
+        this.name = name;
+        this.nickname = nickname;
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getNickname() {
-        return Nickname;
+        return nickname;
     }
 
     public void setNickname(String nickname) {
-        Nickname = nickname;
+        this.nickname = nickname;
     }
 }
