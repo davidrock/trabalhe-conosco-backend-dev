@@ -1,6 +1,6 @@
 package com.davidrock.picpay.picpay.repository;
 
-import com.davidrock.picpay.picpay.models.User;
+import com.davidrock.picpay.picpay.models.Users;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,43 +13,43 @@ import java.util.Optional;
 
 
 @Repository
-public interface IUserRep extends MongoRepository<User, String> {
+public interface IUserRep extends MongoRepository<Users, String> {
 
     @Override
-    <S extends User> List<S> saveAll(Iterable<S> iterable);
+    <S extends Users> List<S> saveAll(Iterable<S> iterable);
 
     @Override
-    List<User> findAll();
+    List<Users> findAll();
 
     @Override
-    List<User> findAll(Sort sort);
+    List<Users> findAll(Sort sort);
 
     @Override
-    <S extends User> S insert(S s);
+    <S extends Users> S insert(S s);
 
     @Override
-    <S extends User> List<S> insert(Iterable<S> iterable);
+    <S extends Users> List<S> insert(Iterable<S> iterable);
 
     @Override
-    <S extends User> List<S> findAll(Example<S> example);
+    <S extends Users> List<S> findAll(Example<S> example);
 
     @Override
-    <S extends User> List<S> findAll(Example<S> example, Sort sort);
+    <S extends Users> List<S> findAll(Example<S> example, Sort sort);
 
     @Override
-    Page<User> findAll(Pageable pageable);
+    Page<Users> findAll(Pageable pageable);
 
     @Override
-    <S extends User> S save(S s);
+    <S extends Users> S save(S s);
 
     @Override
-    Optional<User> findById(String s);
+    Optional<Users> findById(String s);
 
     @Override
     boolean existsById(String s);
 
     @Override
-    Iterable<User> findAllById(Iterable<String> iterable);
+    Iterable<Users> findAllById(Iterable<String> iterable);
 
     @Override
     long count();
@@ -58,25 +58,25 @@ public interface IUserRep extends MongoRepository<User, String> {
     void deleteById(String s);
 
     @Override
-    void delete(User user);
+    void delete(Users user);
 
     @Override
-    void deleteAll(Iterable<? extends User> iterable);
+    void deleteAll(Iterable<? extends Users> iterable);
 
     @Override
     void deleteAll();
 
     @Override
-    <S extends User> Optional<S> findOne(Example<S> example);
+    <S extends Users> Optional<S> findOne(Example<S> example);
 
     @Override
-    <S extends User> Page<S> findAll(Example<S> example, Pageable pageable);
+    <S extends Users> Page<S> findAll(Example<S> example, Pageable pageable);
 
     @Override
-    <S extends User> long count(Example<S> example);
+    <S extends Users> long count(Example<S> example);
 
     @Override
-    <S extends User> boolean exists(Example<S> example);
+    <S extends Users> boolean exists(Example<S> example);
 }
 
 

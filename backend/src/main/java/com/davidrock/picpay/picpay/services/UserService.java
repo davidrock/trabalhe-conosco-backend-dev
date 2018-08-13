@@ -1,12 +1,15 @@
 package com.davidrock.picpay.picpay.services;
 
-import com.davidrock.picpay.picpay.models.User;
+import com.davidrock.picpay.picpay.config.SpringMongoConfig;
+import com.davidrock.picpay.picpay.models.Users;
 import com.davidrock.picpay.picpay.repository.IUserRep;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,14 +19,7 @@ import java.util.List;
 public class UserService implements IUserService {
 
     @Autowired
-    private IUserRep repository;
-
-    @Override
-    public List<User> findUser(String nome) {
-
-
-        return null;
-    }
+    //private IUserRep repository;
 
 
     @Override
@@ -32,6 +28,10 @@ public class UserService implements IUserService {
         BufferedReader br = null;
         String linha = "";
         String csvDivisor = ",";
+
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringMongoConfig.class);
+        MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
+
         try {
 
             br = new BufferedReader(new FileReader(arquivoCSV));
@@ -41,16 +41,16 @@ public class UserService implements IUserService {
 
                 //System.out.println("País [code= " + users[users.length-2] + " , name=" + users[users.length-1] + "]");
 
-                User user = new User(users[users.length-3],users[users.length-2],users[users.length-1]);
+                Users user = new Users(users[users.length-3],users[users.length-2],users[users.length-1]);
 
-                repository.save(user);
+                mongoOperation.save(user);
 
-                List<User> us = repository.findAll();
+            }
 
-                for (User u : us) {
-                    System.out.println("ID:" + u.getId() + "  --  Name:" + u.getName() + "  --  Nick:" + u.getNickname());
-                }
+            List<Users> us = mongoOperation.findAll(Users.class);
 
+            for (Users u : us) {
+                System.out.println("ID:" + u.getId() + "  --  Name:" + u.getName() + "  --  Nick:" + u.getNickname());
             }
 
         } catch (IOException e) {
@@ -67,28 +67,20 @@ public class UserService implements IUserService {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public List<Users> findUser(String nome) {
+        return null;
+    }
 
     /////////////////////////////////*********///////////////////
     @Override
-    public List<User> findAllUsers() {
+    public List<Users> findAllUsers() {
 
-        List<User> users = new ArrayList<>();
+        List<Users> users = new ArrayList<>();
 
-        User u = new User("000" ,"David", "Almeida");
-        User u2 = new User("111", "Nathália", "Almeida");
-        User u3 = new User("222", "Aurora", "Almeida");
+        Users u = new Users("000" ,"David", "Almeida");
+        Users u2 = new Users("111", "Nathália", "Almeida");
+        Users u3 = new Users("222", "Aurora", "Almeida");
 
         users.add(u);
         users.add(u2);
@@ -98,9 +90,9 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User findById(int id) {
+    public Users findById(int id) {
 
-        User u = new User("333", "Usuário", "Tester");
+        Users u = new Users("333", "Usuário", "Tester");
         return u;
     }
 

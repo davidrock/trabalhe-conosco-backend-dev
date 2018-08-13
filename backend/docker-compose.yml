@@ -20,4 +20,4 @@ services:
     - 27017:27017
     container_name: picpay-mongodb
 #    volumes:
-#    - ./data/mongo/db:/data/db
+#    - /data/mongo/db:/data/db

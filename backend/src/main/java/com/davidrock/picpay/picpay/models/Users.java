@@ -1,19 +1,20 @@
 package com.davidrock.picpay.picpay.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
-public class User {
+@Document(collection = "users")
+public class Users {
 
     @Id
     private String id;
     private String name;
     private String nickname;
 
-    public User() {
+    public Users() {
     }
 
-    public User(String id, String name, String nickname) {
+    public Users(String id, String name, String nickname) {
         this.id = id;
         this.name = name;
         this.nickname = nickname;

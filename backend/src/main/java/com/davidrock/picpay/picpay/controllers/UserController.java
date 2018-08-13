@@ -1,7 +1,7 @@
 package com.davidrock.picpay.picpay.controllers;
 
 import com.davidrock.picpay.picpay.models.DefaultResponse;
-import com.davidrock.picpay.picpay.models.User;
+import com.davidrock.picpay.picpay.models.Users;
 import com.davidrock.picpay.picpay.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +20,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/user/{nome}", method = RequestMethod.GET)
-    public ResponseEntity<List<User>> findUser(@PathVariable String nome) {
-        List<User> users = userService.findAllUsers();
+    public ResponseEntity<List<Users>> findUser(@PathVariable String nome) {
+        List<Users> users = userService.findAllUsers();
 
         if (users.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
